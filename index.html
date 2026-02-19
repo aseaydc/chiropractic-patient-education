@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding Your Nervous System — Seay Wellness</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Source+Sans+3:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Brand colors */
+  --primary:   #5987C5;
+  --primary-d: #3D6BA8;
+  --primary-l: #9ACAEC;
+  --lime:      #C1CC23;
+  --lime-d:    #8A9118;
+  --lime-l:    #E8ED6A;
+
+  /* Neutrals */
+  --white:     #ffffff;
+  --bg:        #F6F8FB;
+  --bg2:       #EDF1F7;
+  --surface:   #ffffff;
+  --border:    #DDE4EE;
+  --border-d:  #C4CFDF;
+
+  /* Text */
+  --ink:       #1A2740;
+  --ink2:      #2E4168;
+  --body:      #4A5D7A;
+  --muted:     #7A93B0;
+  --faint:     #A8BCCF;
+
+  /* Status */
+  --red:       #D94040;
+  --amber:     #D97A10;
+  --green:     #2E9B5F;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: var(--bg);
+  color: var(--body);
+  overflow-x: hidden;
+  line-height: 1.65;
+  font-size: 16px;
+}
+
+/* ─── STICKY NAV ─── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  background: var(--white);
+  border-bottom: 2px solid var(--primary);
+  box-shadow: 0 2px 20px rgba(89,135,197,.10);
+}
+.nav-inner {
+  max-width: 1140px; margin: 0 auto;
+  display: flex; align-items: center;
+  height: 58px; padding: 0 24px; gap: 8px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  flex-shrink: 0; margin-right: 16px;
+}
+.nav-mark {
+  width: 32px; height: 32px; border-radius: 6px;
+  background: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-mark svg { width: 18px; height: 18px; fill: white; }
+.nav-name {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--ink); letter-spacing: .5px;
+  text-transform: uppercase;
+}
+.nav-tabs {
+  display: flex; gap: 2px; flex: 1;
+  overflow-x: auto; scrollbar-width: none;
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
+.nt {
+  padding: 6px 13px; border-radius: 6px;
+  font-size: 12px; font-weight: 600;
+  cursor: pointer; white-space: nowrap;
+  color: var(--muted); background: transparent; border: none;
+  font-family: 'Source Sans 3', sans-serif;
+  transition: all .2s; letter-spacing: .3px;
+}
+.nt:hover { color: var(--primary); background: rgba(89,135,197,.06); }
+.nt.on { color: var(--primary); background: rgba(89,135,197,.10); font-weight: 700; }
+.nav-prog {
+  display: flex; gap: 4px; flex-shrink: 0; margin-left: 8px;
+}
+.np { width: 7px; height: 7px; border-radius: 50%; background: var(--border-d); transition: all .3s; }
+.np.done { background: var(--primary-l); }
+.np.here { background: var(--lime); transform: scale(1.4); }
+
+/* ─── SECTION BASE ─── */
+section {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 100px 24px 80px;
+  position: relative;
+}
+section:nth-child(even) { background: var(--bg); }
+section:nth-child(odd)  { background: var(--white); }
+.wrap { max-width: 1100px; margin: 0 auto; width: 100%; }
+
+/* Section header */
+.s-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--primary);
+  margin-bottom: 14px;
+}
+.s-eyebrow::before {
+  content: ''; display: block;
+  width: 28px; height: 2px;
+  background: var(--lime); border-radius: 2px;
+}
+h2.st {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 50px);
+  font-weight: 700; line-height: 1.1;
+  color: var(--ink); margin-bottom: 18px;
+  letter-spacing: -.5px;
+}
+h2.st em { font-style: italic; color: var(--primary); }
+.sd {
+  font-size: 16px; color: var(--body);
+  max-width: 580px; line-height: 1.75;
+  margin-bottom: 38px;
+}
+
+/* Reveal */
+.rv { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s cubic-bezier(.16,1,.3,1); }
+.rv.d1 { transition-delay: .07s; }
+.rv.d2 { transition-delay: .14s; }
+.rv.d3 { transition-delay: .21s; }
+.rv.d4 { transition-delay: .28s; }
+.rv.in { opacity: 1; transform: none; }
+
+/* ─── HERO ─── */
+#hero {
+  background: var(--white);
+  padding-bottom: 0;
+  overflow: hidden;
+}
+.hero-wrap {
+  max-width: 1100px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 420px;
+  gap: 60px; align-items: center;
+}
+@media(max-width:860px) { .hero-wrap { grid-template-columns: 1fr; } }
+.hero-left {}
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(89,135,197,.08);
+  border: 1.5px solid rgba(89,135,197,.25);
+  border-radius: 30px; padding: 6px 16px;
+  font-size: 12px; font-weight: 700; color: var(--primary);
+  letter-spacing: .5px; margin-bottom: 26px;
+  animation: slideIn .7s ease both;
+}
+.hero-pill-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--lime); flex-shrink: 0;
+  animation: blink 2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:.3} }
+@keyframes slideIn { from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:none} }
+h1.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5.5vw, 68px);
+  font-weight: 700; line-height: 1.05;
+  color: var(--ink); margin-bottom: 20px;
+  letter-spacing: -.5px;
+  animation: slideIn .8s .1s ease both;
+}
+h1.hero-title span {
+  display: block; color: var(--primary);
+  font-style: italic;
+}
+.hero-sub {
+  font-size: 17px; color: var(--body);
+  max-width: 500px; line-height: 1.75;
+  margin-bottom: 36px;
+  animation: slideIn .8s .2s ease both;
+}
+.hero-stats {
+  display: flex; gap: 36px; flex-wrap: wrap;
+  margin-bottom: 40px;
+  animation: slideIn .8s .3s ease both;
+}
+.hstat { border-left: 3px solid var(--lime); padding-left: 14px; }
+.hstat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 700;
+  color: var(--primary); line-height: 1; display: block;
+}
+.hstat-lbl { font-size: 12px; color: var(--muted); display: block; margin-top: 2px; }
+.hero-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 36px;
+  background: var(--primary);
+  color: white; font-weight: 700; font-size: 15px;
+  border: none; border-radius: 8px; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(89,135,197,.35);
+  transition: all .3s;
+  font-family: 'Source Sans 3', sans-serif;
+  animation: slideIn .8s .4s ease both;
+}
+.hero-btn:hover { background: var(--primary-d); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(89,135,197,.45); }
+.hero-btn .arrow { font-size: 18px; transition: transform .2s; }
+.hero-btn:hover .arrow { transform: translateX(4px); }
+/* Hero right panel */
+.hero-panel {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(89,135,197,.12);
+  animation: fadeUp .9s .5s ease both;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none} }
+.hero-panel-header {
+  background: var(--primary);
+  padding: 18px 24px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-panel-title {
+  font-size: 13px; font-weight: 700;
+  color: white; letter-spacing: .5px;
+  text-transform: uppercase;
+}
+.panel-icon { font-size: 20px; }
+.hero-panel-body { padding: 20px 24px; }
+.sys-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.sys-list li {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px; font-weight: 600; color: var(--ink2);
+  transition: all .2s;
+}
+.sys-list li:hover { border-color: var(--primary-l); }
+.sys-check {
+  font-size: 11px; font-weight: 700;
+  color: var(--primary);
+  background: rgba(89,135,197,.1);
+  border-radius: 12px; padding: 2px 8px;
+}
+.hero-lime-bar {
+  height: 4px;
+  background: linear-gradient(90deg, var(--lime), var(--primary-l), var(--primary));
+}
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  transition: all .3s;
+  box-shadow: 0 2px 12px rgba(89,135,197,.06);
+}
+.card:hover { border-color: var(--primary-l); box-shadow: 0 6px 24px rgba(89,135,197,.12); transform: translateY(-2px); }
+.card-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+.card-title { font-weight: 700; font-size: 15px; color: var(--ink); margin-bottom: 6px; }
+.card-body { font-size: 13px; color: var(--body); line-height: 1.6; }
+
+/* Accent card variants */
+.card-primary { border-left: 4px solid var(--primary); }
+.card-lime    { border-left: 4px solid var(--lime); }
+.card-alert   { border-left: 4px solid var(--red); background: #FEF7F7; }
+.card-amber   { border-left: 4px solid var(--amber); background: #FFFBF5; }
+.card-green   { border-left: 4px solid var(--green); background: #F3FBF6; }
+
+/* Quote block */
+.quote-block {
+  border-left: 4px solid var(--lime);
+  background: rgba(193,204,35,.06);
+  border-radius: 0 10px 10px 0;
+  padding: 18px 22px;
+  margin: 4px 0;
+}
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px; font-style: italic;
+  color: var(--ink2); line-height: 1.6;
+  margin-bottom: 8px;
+}
+.quote-attr { font-size: 12px; color: var(--muted); font-weight: 600; letter-spacing: .5px; }
+
+/* Research badge */
+.r-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(89,135,197,.08);
+  border: 1px solid rgba(89,135,197,.2);
+  border-radius: 20px; padding: 3px 10px;
+  font-size: 11px; font-weight: 700;
+  color: var(--primary); letter-spacing: .3px;
+  margin-top: 8px;
+  font-family: 'Roboto Mono', monospace;
+}
+.r-badge::before { content: '🔬'; font-size: 10px; }
+
+/* Stat callout */
+.stat-band {
+  background: var(--primary);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex; align-items: center; gap: 18px;
+}
+.stat-band-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px; font-weight: 700;
+  color: white; line-height: 1; flex-shrink: 0;
+}
+.stat-band-text { font-size: 13px; color: rgba(255,255,255,.85); line-height: 1.5; }
+.stat-band-text strong { color: white; }
+
+/* Lime accent band */
+.lime-band {
+  background: var(--lime);
+  border-radius: 12px;
+  padding: 18px 22px;
+}
+.lime-band-text { font-size: 14px; color: var(--ink); line-height: 1.65; font-weight: 500; }
+.lime-band-text strong { color: var(--ink); font-weight: 700; }
+
+/* Two-column layout */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: start;
+}
+@media(max-width:780px) { .two-col { grid-template-columns: 1fr; } }
+.two-col-center { align-items: center; }
+
+/* Step list */
+.step-list { display: flex; flex-direction: column; gap: 14px; }
+.step-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: 10px; padding: 16px 18px;
+  transition: all .3s;
+}
+.step-item:hover { border-color: var(--primary-l); transform: translateX(4px); }
+.step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--primary); color: white;
+  font-size: 12px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.step-title { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+.step-body  { font-size: 13px; color: var(--body); line-height: 1.55; }
+
+/* Data bar */
+.data-bar-row { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+.dbr-header { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; }
+.dbr-label { color: var(--ink2); }
+.dbr-pct   { color: var(--primary); }
+.dbr-track {
+  height: 8px; background: var(--bg2);
+  border-radius: 8px; overflow: hidden;
+}
+.dbr-fill {
+  height: 100%; border-radius: 8px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-l));
+  width: 0%; transition: width 1.4s cubic-bezier(.16,1,.3,1);
+}
+.dbr-fill.lime { background: linear-gradient(90deg, var(--lime-d), var(--lime)); }
+.dbr-fill.red  { background: linear-gradient(90deg, #D94040, #F87171); }
+
+/* Tag */
+.tag {
+  display: inline-flex; align-items: center;
+  background: rgba(89,135,197,.08);
+  border: 1px solid rgba(89,135,197,.2);
+  border-radius: 20px; padding: 4px 12px;
+  font-size: 12px; font-weight: 600; color: var(--primary);
+  margin: 3px;
+}
+.tag.lime {
+  background: rgba(193,204,35,.12);
+  border-color: rgba(193,204,35,.4);
+  color: var(--lime-d);
+}
+.tag.red {
+  background: rgba(217,64,64,.08);
+  border-color: rgba(217,64,64,.25);
+  color: var(--red);
+}
+
+/* Section divider stripe */
+.stripe {
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-l), var(--lime), var(--primary-l), var(--primary));
+}
+
+/* ─── S1: MASTER CONTROL ─── */
+.brain-diagram {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 28px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(89,135,197,.08);
+}
+.brain-diagram-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 20px;
+}
+.brain-visual {
+  width: 200px; height: 160px; margin: 0 auto 20px;
+  position: relative;
+}
+/* Rings for brain diagram */
+.b-ring {
+  position: absolute; border-radius: 50%;
+  border: 2px solid;
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  animation: rPulse 3s ease-in-out infinite;
+}
+.b-ring:nth-child(1){width:60px;height:60px;border-color:var(--primary);animation-delay:0s;}
+.b-ring:nth-child(2){width:100px;height:100px;border-color:var(--primary-l);opacity:.6;animation-delay:.6s;}
+.b-ring:nth-child(3){width:140px;height:140px;border-color:rgba(154,202,236,.3);opacity:.4;animation-delay:1.2s;}
+.b-ring:nth-child(4){width:180px;height:180px;border-color:rgba(193,204,35,.2);opacity:.3;animation-delay:1.8s;}
+.b-center {
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:54px;height:54px;border-radius:50%;
+  background:var(--primary);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:9px;font-weight:800;color:white;letter-spacing:.5px;text-transform:uppercase;
+  text-align:center;line-height:1.2;
+  box-shadow:0 4px 16px rgba(89,135,197,.4);
+}
+@keyframes rPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.04)}}
+.sys-connections {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  margin-top: 4px;
+}
+.sys-conn {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 9px 12px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px;
+}
+.sys-conn-name { font-weight: 600; color: var(--ink2); }
+.sys-conn-status {
+  font-size: 10px; font-weight: 700;
+  color: var(--primary);
+  background: rgba(89,135,197,.1);
+  border-radius: 10px; padding: 2px 7px;
+}
+
+/* ─── S2: THE REAL PROBLEM ─── */
+.signal-demo {
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: 14px; padding: 24px;
+}
+.signal-demo-title {
+  font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 18px;
+}
+.sig-row { margin-bottom: 20px; }
+.sig-row-label {
+  font-size: 12px; font-weight: 700; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 6px;
+}
+.sig-row-label.good { color: var(--primary); }
+.sig-row-label.bad  { color: var(--red); }
+.sig-bits { display: flex; gap: 3px; flex-wrap: wrap; margin-bottom: 6px; }
+.sbit { width: 14px; height: 20px; border-radius: 3px; flex-shrink: 0; }
+.sbit.on  { background: var(--primary); }
+.sbit.off { background: var(--border); }
+.sbit.err { background: #F87171; }
+.sbit.mis { background: var(--border-d); }
+.sig-pct  { font-family: 'Roboto Mono', monospace; font-size: 13px; font-weight: 700; }
+.sig-pct.good { color: var(--primary); }
+.sig-pct.bad  { color: var(--red); }
+.sig-caption  { font-size: 12px; color: var(--muted); line-height: 1.4; margin-top: 4px; }
+
+/* ─── Cascade chain ─── */
+.cascade-chain { display: flex; flex-direction: column; gap: 0; }
+.casc-step {
+  display: flex; gap: 0; align-items: stretch;
+}
+.casc-connector {
+  display: flex; flex-direction: column; align-items: center; width: 40px; flex-shrink: 0;
+}
+.casc-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--primary); border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px var(--primary);
+  flex-shrink: 0; margin-top: 20px; z-index: 1;
+}
+.casc-line { width: 2px; background: linear-gradient(180deg,var(--primary),var(--primary-l)); flex: 1; }
+.casc-step:last-child .casc-line { display: none; }
+.casc-body {
+  flex: 1; background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 10px; padding: 14px 16px;
+  margin: 6px 0 6px 6px;
+  transition: all .3s;
+}
+.casc-body:hover { border-color: var(--primary-l); }
+.casc-title { font-weight: 700; font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+.casc-text  { font-size: 12px; color: var(--body); line-height: 1.55; }
+.casc-step:nth-child(3) .casc-dot,
+.casc-step:nth-child(3) .casc-line { background: var(--amber); box-shadow:0 0 0 2px var(--amber); }
+.casc-step:nth-child(4) .casc-dot,
+.casc-step:nth-child(4) .casc-line { background: #f97316; box-shadow:0 0 0 2px #f97316; }
+.casc-step:nth-child(5) .casc-dot,
+.casc-step:nth-child(5) .casc-line { background: var(--red); box-shadow:0 0 0 2px var(--red); }
+
+/* fMRI callout */
+.fmri-box {
+  background: rgba(89,135,197,.05);
+  border: 1.5px solid rgba(89,135,197,.2);
+  border-radius: 12px; padding: 18px;
+}
+.fmri-box-title { font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase; }
+.fmri-box-body  { font-size: 13px; color: var(--body); line-height: 1.65; }
+
+/* ─── S3: SYMPATHETIC ─── */
+.sym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+@media(max-width:780px) { .sym-grid { grid-template-columns: 1fr; } }
+.sym-center-card {
+  background: #FEF7F7;
+  border: 2px solid rgba(217,64,64,.25);
+  border-radius: 14px; padding: 22px;
+  text-align: center; margin-bottom: 20px;
+}
+.sym-center-title { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--red); margin-bottom:6px; }
+.sym-center-sub   { font-size:13px; color:#A05050; }
+.sym-effects-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.sym-effect {
+  background:var(--white); border:1.5px solid var(--border);
+  border-radius:10px; padding:12px; text-align:center;
+  transition:all .25s;
+}
+.sym-effect:hover { border-color:rgba(217,64,64,.3); }
+.sym-effect-icon  { font-size:22px; display:block; margin-bottom:4px; }
+.sym-effect-name  { font-size:11px; font-weight:600; color:var(--ink2); }
+.sym-effect-val   { font-size:11px; font-weight:700; color:var(--red); margin-top:2px; }
+.vagal-card {
+  background:rgba(89,135,197,.05);
+  border:1.5px solid rgba(89,135,197,.2);
+  border-radius:12px; padding:18px;
+}
+.vagal-title { font-weight:700; font-size:14px; color:var(--primary); margin-bottom:8px; }
+.vagal-body  { font-size:13px; color:var(--body); line-height:1.65; }
+
+/* ─── S4: SENSITIZATION ─── */
+.sen-layout { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+@media(max-width:780px) { .sen-layout { grid-template-columns:1fr; } }
+.phase-cards { display:flex; flex-direction:column; gap:10px; }
+.phase-card {
+  border-radius:10px; padding:16px 18px;
+  border-left:4px solid; border:1.5px solid;
+  transition:all .3s;
+}
+.phase-card:hover { transform:translateX(4px); }
+.phase-card.p1 { border-color:rgba(46,155,95,.3); background:#F3FBF6; border-left-color:var(--green); }
+.phase-card.p2 { border-color:rgba(217,122,16,.25); background:#FFFBF5; border-left-color:var(--amber); }
+.phase-card.p3 { border-color:rgba(217,64,64,.25); background:#FEF7F7; border-left-color:var(--red); }
+.phase-card-title { font-weight:700; font-size:13px; margin-bottom:5px; }
+.phase-card.p1 .phase-card-title { color:var(--green); }
+.phase-card.p2 .phase-card-title { color:var(--amber); }
+.phase-card.p3 .phase-card-title { color:var(--red); }
+.phase-card-body { font-size:12px; color:var(--body); line-height:1.55; }
+/* Dial */
+.dial-wrap {
+  background:var(--bg); border:1.5px solid var(--border);
+  border-radius:14px; padding:24px; text-align:center;
+  margin-bottom:16px;
+}
+.dial-title { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+.dial-svg-wrap { width:200px; height:110px; margin:0 auto; position:relative; }
+.dial-svg-wrap svg { overflow:visible; }
+.dial-needle-el { transform-origin:100px 100px; transition:transform 1s cubic-bezier(.34,1.56,.64,1); }
+.dial-btns { display:flex; gap:10px; justify-content:center; margin-top:14px; }
+.dial-btn {
+  padding:7px 18px; border-radius:20px; border:1.5px solid;
+  font-size:12px; font-weight:700; cursor:pointer;
+  font-family:'Source Sans 3',sans-serif; transition:all .2s;
+}
+.dial-btn.normal { border-color:var(--primary); color:var(--primary); background:rgba(89,135,197,.08); }
+.dial-btn.normal:hover { background:rgba(89,135,197,.15); }
+.dial-btn.sensitized { border-color:var(--red); color:var(--red); background:rgba(217,64,64,.06); }
+.dial-btn.sensitized:hover { background:rgba(217,64,64,.12); }
+#dialDesc { font-size:13px; color:var(--body); margin-top:12px; min-height:44px; line-height:1.5; }
+
+/* ─── S5: SYSTEMS ─── */
+.systems-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
+.sys-card {
+  background:var(--white); border:1.5px solid var(--border);
+  border-radius:14px; padding:22px;
+  position:relative; overflow:hidden;
+  transition:all .3s;
+  box-shadow:0 2px 10px rgba(89,135,197,.06);
+}
+.sys-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:4px;
+  background:var(--sys-c,var(--primary));
+}
+.sys-card:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(89,135,197,.14); border-color:var(--primary-l); }
+.sys-icon  { font-size:32px; margin-bottom:10px; display:block; }
+.sys-title { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+.sys-sub   { font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px; }
+.sys-mech  { font-size:13px; color:var(--body); line-height:1.6; }
+.sys-symptoms { list-style:none; display:flex; flex-direction:column; gap:5px; margin-top:12px; padding-top:12px; border-top:1px solid var(--border); }
+.sys-symptoms li { font-size:12px; color:var(--body); padding-left:14px; position:relative; line-height:1.4; }
+.sys-symptoms li::before { content:'→'; position:absolute; left:0; font-size:10px; color:var(--primary); top:1px; }
+
+/* ─── S6: INFLAMMATION ─── */
+.inflam-layout { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+@media(max-width:780px) { .inflam-layout { grid-template-columns:1fr; } }
+.cycle-box {
+  background:var(--bg); border:1.5px solid var(--border);
+  border-radius:16px; padding:24px;
+}
+.cycle-box-title { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); text-align:center; margin-bottom:20px; }
+.cycle-nodes { display:grid; grid-template-columns:1fr 1fr; gap:10px; position:relative; }
+.cycle-middle {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:62px; height:62px; border-radius:50%;
+  background:var(--red); color:white;
+  display:flex; align-items:center; justify-content:center;
+  font-size:10px; font-weight:800; text-align:center; line-height:1.2;
+  z-index:2; box-shadow:0 4px 16px rgba(217,64,64,.35);
+}
+.cnode {
+  background:var(--white); border:1.5px solid rgba(217,64,64,.2);
+  border-radius:10px; padding:12px; text-align:center;
+}
+.cnode-icon  { font-size:22px; display:block; margin-bottom:4px; }
+.cnode-title { font-size:11px; font-weight:700; color:var(--red); }
+.cnode-body  { font-size:10px; color:var(--muted); margin-top:3px; line-height:1.4; }
+.disease-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:16px; }
+.disease-tag {
+  background:rgba(217,64,64,.06); border:1px solid rgba(217,64,64,.2);
+  border-radius:8px; padding:10px 12px;
+  font-size:12px; color:var(--red); font-weight:600;
+  display:flex; align-items:center; gap:6px;
+}
+.hpa-box {
+  background:rgba(245,166,35,.06); border:1.5px solid rgba(217,122,16,.2);
+  border-radius:12px; padding:18px; margin-top:14px;
+}
+.hpa-title { font-weight:700; font-size:14px; color:var(--amber); margin-bottom:8px; }
+.hpa-body  { font-size:13px; color:var(--body); line-height:1.65; }
+.hpa-tags  { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+.hpa-tag   { background:rgba(245,166,35,.12); color:var(--amber); border-radius:20px; padding:4px 10px; font-size:11px; font-weight:600; }
+
+/* ─── S7: MOVEMENT / BDNF ─── */
+.bdnf-panel {
+  background:var(--primary);
+  border-radius:16px; padding:32px;
+  color:white; text-align:center;
+  box-shadow:0 8px 32px rgba(89,135,197,.3);
+}
+.bdnf-word { font-family:'Playfair Display',serif; font-size:64px; font-weight:700; line-height:1; letter-spacing:-1px; display:block; }
+.bdnf-label { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; opacity:.8; margin:8px 0 14px; display:block; }
+.bdnf-body { font-size:14px; opacity:.9; line-height:1.65; max-width:300px; margin:0 auto 20px; }
+.bdnf-tag  { display:inline-block; background:rgba(255,255,255,.15); color:white; border-radius:20px; padding:6px 14px; font-size:12px; font-weight:700; }
+.bdnf-table { margin-top:22px; display:flex; flex-direction:column; gap:8px; }
+.bdnf-row  { display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,.1); border-radius:8px; padding:9px 14px; font-size:13px; }
+.bdnf-row-label { color:rgba(255,255,255,.85); }
+.bdnf-row-val   { font-weight:700; font-size:12px; }
+.bdnf-row-val.up   { color:var(--lime-l); }
+.bdnf-row-val.norm { color:#9ACAEC; }
+.bdnf-row-val.down { color:#F87171; }
+
+/* ─── S8: GUT-BRAIN ─── */
+.vagus-visual {
+  background:var(--bg); border:1.5px solid var(--border);
+  border-radius:16px; padding:26px;
+}
+.vagus-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--ink); margin-bottom:14px; }
+.vagus-body  { font-size:13px; color:var(--body); line-height:1.65; margin-bottom:18px; }
+.vagus-chain { display:flex; flex-direction:column; }
+.vc-item {
+  display:flex; align-items:center; gap:10px;
+  font-size:13px; font-weight:600; color:var(--ink2);
+  padding:8px 0;
+}
+.vc-dot { width:10px; height:10px; border-radius:50%; background:var(--primary); flex-shrink:0; }
+.vc-arrow { color:var(--primary-l); font-size:20px; margin-left:18px; opacity:.6; }
+
+/* ─── S9: CORRECTION ─── */
+.corr-layout { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+@media(max-width:780px) { .corr-layout { grid-template-columns:1fr; } }
+.phase-timeline {
+  background:var(--bg); border:1.5px solid var(--border);
+  border-radius:14px; padding:22px;
+}
+.pt-title { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+.pt-steps { display:flex; gap:0; }
+.pt-step  { flex:1; text-align:center; position:relative; }
+.pt-step::after { content:'→'; position:absolute; right:-8px; top:8px; color:var(--primary-l); font-size:16px; }
+.pt-step:last-child::after { display:none; }
+.pt-num { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--primary); display:block; line-height:1; }
+.pt-lbl { font-size:10px; color:var(--muted); line-height:1.3; padding:0 4px; margin-top:4px; display:block; }
+.outcome-phases { display:flex; flex-direction:column; gap:10px; }
+.op-card { border-radius:10px; padding:16px 18px; border-left:4px solid; border:1.5px solid; }
+.op-card.relief    { border-color:rgba(217,64,64,.25); border-left-color:var(--red); background:#FEF7F7; }
+.op-card.correct   { border-color:rgba(217,122,16,.25); border-left-color:var(--amber); background:#FFFBF5; }
+.op-card.wellness  { border-color:rgba(89,135,197,.25); border-left-color:var(--primary); background:rgba(89,135,197,.04); }
+.op-title  { font-weight:700; font-size:13px; margin-bottom:8px; }
+.op-card.relief   .op-title { color:var(--red); }
+.op-card.correct  .op-title { color:var(--amber); }
+.op-card.wellness .op-title { color:var(--primary); }
+.op-list { list-style:none; display:flex; flex-direction:column; gap:4px; }
+.op-list li { font-size:12px; color:var(--body); padding-left:14px; position:relative; line-height:1.4; }
+.op-card.relief   .op-list li::before { content:'•'; position:absolute;left:0;color:var(--red); }
+.op-card.correct  .op-list li::before { content:'•'; position:absolute;left:0;color:var(--amber); }
+.op-card.wellness .op-list li::before { content:'✓'; position:absolute;left:0;color:var(--primary);font-size:10px; }
+
+/* ─── S10: DECISION ─── */
+.dec-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:28px; }
+@media(max-width:700px) { .dec-grid { grid-template-columns:1fr; } }
+.dec-card { border-radius:14px; padding:26px; border:2px solid; }
+.dec-card.no  { background:#FEF7F7; border-color:rgba(217,64,64,.3); }
+.dec-card.yes { background:rgba(89,135,197,.04); border-color:rgba(89,135,197,.3); box-shadow:0 4px 24px rgba(89,135,197,.12); }
+.dec-card h3  { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; margin-bottom:16px; }
+.dec-card.no  h3 { color:var(--red); }
+.dec-card.yes h3 { color:var(--primary); }
+.dec-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.dec-list li { font-size:13px; color:var(--body); padding-left:20px; position:relative; line-height:1.5; }
+.dec-card.no  .dec-list li::before { content:'✗'; position:absolute;left:0;color:var(--red);font-weight:700; }
+.dec-card.yes .dec-list li::before { content:'✓'; position:absolute;left:0;color:var(--primary);font-weight:700; }
+.commit-panel {
+  background:var(--primary);
+  border-radius:18px; padding:42px;
+  text-align:center;
+  box-shadow:0 10px 48px rgba(89,135,197,.3);
+}
+.commit-panel h3 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(18px,3vw,28px);
+  font-weight:700; color:white; margin-bottom:14px;
+  line-height:1.2;
+}
+.commit-panel p { font-size:15px; color:rgba(255,255,255,.85); line-height:1.75; max-width:600px; margin:0 auto 28px; }
+.commit-btn {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:16px 44px;
+  background:var(--lime); color:var(--ink);
+  font-weight:800; font-size:16px;
+  border:none; border-radius:8px; cursor:pointer;
+  box-shadow:0 4px 24px rgba(193,204,35,.5);
+  transition:all .3s; font-family:'Source Sans 3',sans-serif;
+  letter-spacing:.3px;
+}
+.commit-btn:hover { background:var(--lime-l); transform:translateY(-2px); box-shadow:0 8px 36px rgba(193,204,35,.6); }
+.commit-confirm {
+  display:none; margin-top:20px; padding:16px 24px;
+  background:rgba(255,255,255,.15); border-radius:10px;
+}
+.commit-confirm p { font-size:14px; color:white; font-weight:600; text-align:center; }
+
+/* Footer stripe */
+.footer-stripe {
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-l) 40%, var(--lime) 60%, var(--primary-l) 80%, var(--primary));
+}
+
+/* ─── PLAIN ENGLISH LAYER ─── */
+.pe-box {
+  background: linear-gradient(135deg, rgba(193,204,35,.1), rgba(193,204,35,.04));
+  border: 2px solid rgba(193,204,35,.5);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-top: 22px;
+  position: relative;
+}
+.pe-label {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 10px; font-weight: 800; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--lime-d);
+  margin-bottom: 10px;
+}
+.pe-label-icon { font-size: 16px; }
+.pe-text {
+  font-size: 16px; color: var(--ink2);
+  line-height: 1.75; font-weight: 500;
+}
+.pe-text strong { color: var(--ink); font-weight: 700; }
+.pe-analogy {
+  margin-top: 12px; padding: 12px 14px;
+  background: rgba(255,255,255,.7);
+  border-radius: 8px;
+  font-size: 14px; color: var(--body);
+  line-height: 1.7;
+}
+.pe-analogy-label {
+  font-size: 10px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 5px; display: block;
+}
+.pe-analogy-text { font-style: italic; }
+.pe-analogy-text strong { font-style: normal; font-weight: 700; color: var(--lime-d); }
+
+/* Tooltip glossary */
+.tt {
+  border-bottom: 1px dashed var(--primary);
+  cursor: help;
+  position: relative;
+}
+.tt::after {
+  content: attr(data-tip);
+  position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%);
+  background: var(--ink); color: white;
+  font-size: 12px; font-weight: 500;
+  padding: 7px 11px; border-radius: 7px;
+  white-space: nowrap; pointer-events: none;
+  opacity: 0; transition: opacity .2s;
+  z-index: 100; font-style: normal;
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+  max-width: 240px; white-space: normal; text-align: center;
+}
+.tt:hover::after { opacity: 1; }
+
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <img src="data:image/jpeg;base64,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" alt="Seay Wellness" style="height:38px;width:auto;display:block;" />
+    </div>
+    <div class="nav-tabs">
+      <button class="nt on"  onclick="go('hero')">Overview</button>
+      <button class="nt" onclick="go('master')">Nervous System</button>
+      <button class="nt" onclick="go('degraded')">The Problem</button>
+      <button class="nt" onclick="go('sympathetic')">Stress Response</button>
+      <button class="nt" onclick="go('sensitization')">Pain Science</button>
+      <button class="nt" onclick="go('systems')">7 Systems</button>
+      <button class="nt" onclick="go('inflammation')">Inflammation</button>
+      <button class="nt" onclick="go('movement')">Brain Nutrition</button>
+      <button class="nt" onclick="go('gutbrain')">Gut-Brain</button>
+      <button class="nt" onclick="go('correction')">The Solution</button>
+      <button class="nt" onclick="go('decision')">Your Choice</button>
+    </div>
+    <div class="nav-prog" id="navProg"></div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero" style="background:var(--white);">
+  <div class="wrap">
+    <div class="hero-wrap">
+      <div class="hero-left">
+        <div style="margin-bottom:28px;animation:slideIn .7s ease both;">
+          <img src="data:image/jpeg;base64,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" alt="Seay Wellness" style="height:56px;width:auto;display:block;" />
+        </div>
+        <div class="hero-pill" style="margin-bottom:20px;"><div class="hero-pill-dot"></div>Patient Education</div>
+        <h1 class="hero-title">
+          Your Nervous System<br>
+          <span>Is the Master<br>of Your Health.</span>
+        </h1>
+        <p class="hero-sub">Pain is the alarm bell — not the fire. Today you'll discover what's really happening inside your nervous system, why symptoms are just the surface, and why comprehensive care changes everything.</p>
+        
+        <div class="pe-box" style="margin-bottom:28px;margin-top:0;">
+          <div class="pe-label"><span class="pe-label-icon">💡</span>The Simple Version</div>
+          <div class="pe-text">Your spine is your brain's <strong>antenna</strong>. When it's stuck, misaligned, or not moving right, your brain gets a weak, garbled signal — and starts making bad decisions for <strong>every system in your body.</strong> Not just your back. Everything.</div>
+        </div>
+        <div class="hero-stats">
+          <div class="hstat">
+            <span class="hstat-num">90%</span>
+            <span class="hstat-lbl">of dysfunction is silent — no pain signal</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-num">7</span>
+            <span class="hstat-lbl">body systems disrupted by spinal dysfunction</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-num">3T</span>
+            <span class="hstat-lbl">nerve signals/sec your spine sends to the brain</span>
+          </div>
+        </div>
+        <button class="hero-btn" onclick="go('master')">Begin Your Education <span class="arrow">→</span></button>
+      </div>
+      <div class="hero-panel rv">
+        <div class="hero-lime-bar"></div>
+        <div class="hero-panel-header">
+          <span class="panel-icon">🧠</span>
+          <span class="hero-panel-title">Your Nervous System Controls</span>
+        </div>
+        <div class="hero-panel-body">
+          <ul class="sys-list">
+            <li><span>Immune Function</span><span class="sys-check">NS Regulated ✓</span></li>
+            <li><span>Hormone Balance</span><span class="sys-check">NS Regulated ✓</span></li>
+            <li><span>Digestion</span><span class="sys-check">NS Regulated ✓</span></li>
+            <li><span>Sleep & Recovery</span><span class="sys-check">NS Regulated ✓</span></li>
+            <li><span>Cardiovascular</span><span class="sys-check">NS Regulated ✓</span></li>
+            <li><span>Brain Health</span><span class="sys-check">NS Regulated ✓</span></li>
+            <li><span>Metabolism</span><span class="sys-check">NS Regulated ✓</span></li>
+          </ul>
+          <div style="margin-top:16px;padding:12px 14px;background:rgba(193,204,35,.1);border:1px solid rgba(193,204,35,.3);border-radius:8px;">
+            <p style="font-size:12px;color:var(--lime-d);font-weight:600;line-height:1.5;">When spinal dysfunction disrupts your nervous system, every one of these systems is compromised — whether you feel it or not.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ══ S1: MASTER CONTROL ══ -->
+<section id="master" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="two-col two-col-center">
+      <div>
+        <div class="s-eyebrow rv">The Foundation</div>
+        <h2 class="st rv">Your Brain Runs<br><em>Every System</em></h2>
+        <p class="sd rv">Before understanding what goes wrong, you need to understand what's supposed to happen. Your brain and nervous system don't just control pain — they regulate every organ, hormone, immune response, and metabolic process in your body.</p>
+        <div class="step-list rv">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div><div class="step-title">Brain: The Commander</div><div class="step-body">Your brain sends and receives trillions of signals every second, constantly building a live internal map of your body using sensory input from your joints, muscles, and tissues.</div></div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div><div class="step-title">Spine: The Information Highway</div><div class="step-body">Your spinal joints are major sensory organs — streaming proprioceptive data (body position, movement, load) to your brain at all times. When joint mechanics are disrupted, this stream degrades.</div></div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div><div class="step-title">The Critical Connection</div><div class="step-body">Corrupted input means corrupted output. When your brain receives degraded spinal data, every downstream decision — immune response, hormone regulation, digestion — is made on bad information.</div></div>
+          </div>
+        </div>
+        <div class="quote-block rv d3" style="margin-top:20px;">
+          <div class="quote-text">"The nervous system controls and coordinates all organs and structures of the human body."</div>
+          <div class="quote-attr">— Gray's Anatomy, 29th Edition</div>
+        </div>
+        <div class="pe-box rv d4">
+          <div class="pe-label"><span class="pe-label-icon">💡</span>In Plain Terms</div>
+          <div class="pe-text">Think of your nervous system like the <strong>electrical wiring in a house</strong>. The brain is the breaker panel. Your spine is the main cable running from it. Every room — immune system, digestion, hormones, sleep — runs off that cable. If the cable gets damaged, the whole house has problems. Not just one room.</div>
+        </div>
+
+      </div>
+      <div class="brain-diagram rv">
+        <div class="brain-diagram-title">Neural Broadcast — Brain to Body</div>
+        <div class="brain-visual">
+          <div class="b-ring"></div><div class="b-ring"></div>
+          <div class="b-ring"></div><div class="b-ring"></div>
+          <div class="b-center">MASTER<br>CONTROL</div>
+        </div>
+        <div class="sys-connections">
+          <div class="sys-conn"><span class="sys-conn-name">🛡️ Immune</span><span class="sys-conn-status">Active ✓</span></div>
+          <div class="sys-conn"><span class="sys-conn-name">⚗️ Hormones</span><span class="sys-conn-status">Active ✓</span></div>
+          <div class="sys-conn"><span class="sys-conn-name">🍽️ Digestion</span><span class="sys-conn-status">Active ✓</span></div>
+          <div class="sys-conn"><span class="sys-conn-name">❤️ Cardiac</span><span class="sys-conn-status">Active ✓</span></div>
+          <div class="sys-conn"><span class="sys-conn-name">😴 Sleep</span><span class="sys-conn-status">Active ✓</span></div>
+          <div class="sys-conn"><span class="sys-conn-name">🧠 Brain Fx</span><span class="sys-conn-status">Active ✓</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S2: THE REAL PROBLEM ══ -->
+<section id="degraded" style="background:var(--white);">
+  <div class="wrap">
+    <div class="s-eyebrow rv">The Real Problem</div>
+    <h2 class="st rv">It's Not a Bone<br><em>Pressing on a Nerve</em></h2>
+    <p class="sd rv">That outdated model fails to explain why spinal dysfunction causes fatigue, immune suppression, digestive problems, and mood changes. The true mechanism is a disruption of the brain's primary sensory input — with consequences that reach every body system.</p>
+    <div class="two-col">
+      <div>
+        <div class="signal-demo rv">
+          <div class="signal-demo-title">📡 Proprioceptive Signal Quality</div>
+          <div class="sig-row">
+            <div class="sig-row-label good">🟢 Healthy Joint — Brain Signal</div>
+            <div class="sig-bits" id="goodBits"></div>
+            <div class="sig-pct good">100% signal clarity</div>
+            <div class="sig-caption">Rich, accurate data. Brain makes optimal decisions for every body system.</div>
+          </div>
+          <hr style="border:none;border-top:1px solid var(--border);margin:16px 0;">
+          <div class="sig-row">
+            <div class="sig-row-label bad">🔴 Dysfunctional Joint — Brain Signal</div>
+            <div class="sig-bits" id="badBits"></div>
+            <div class="sig-pct bad">~35% signal — corrupted, unreliable</div>
+            <div class="sig-caption">Degraded data. Brain receives a distorted picture. Everything downstream is compromised.</div>
+          </div>
+        </div>
+        <div class="fmri-box rv d1" style="margin-top:14px;">
+          <div class="fmri-box-title">🔬 fMRI Research Finding</div>
+          <div class="fmri-box-body">Brain imaging studies show chronic joint dysfunction literally <strong>reshapes the <span class="tt" data-tip="The part of your brain that maps your body — where sensation and pain are processed">somatosensory cortex</span></strong> — the brain region that maps your body. Affected areas shrink and become disorganized (<span class="tt" data-tip="When your brain's body map becomes disorganized — pain seems to spread and become hard to locate">"cortical smudging"</span>). This is measurable, structural brain change — not metaphorical dysfunction. And chiropractic care has been shown to reverse it.</div>
+        </div>
+        <div class="pe-box rv d2">
+          <div class="pe-label"><span class="pe-label-icon">💡</span>In Plain Terms</div>
+          <div class="pe-text">When a spinal joint isn't moving right, it's like driving with a <strong>dirty windshield</strong>. You can still drive — but your brain can't see clearly, so it makes worse decisions for everything it controls. Pain is just one symptom of that bad information.</div>
+          <div class="pe-analogy">
+            <span class="pe-analogy-label">📱 Another way to think about it</span>
+            <span class="pe-analogy-text">Imagine your cell phone with <strong>one bar of signal</strong>. Calls drop. Apps crash. GPS gives wrong directions. Your body with a dysfunctional spine is doing the same thing — the brain is working with a weak, unreliable connection to everything it needs to run properly.</span>
+          </div>
+        </div>
+
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;" class="rv">The Downstream Cascade</div>
+        <div class="cascade-chain rv d1">
+          <div class="casc-step"><div class="casc-connector"><div class="casc-dot"></div><div class="casc-line"></div></div><div class="casc-body"><div class="casc-title">Degraded Proprioceptive Input</div><div class="casc-text">Dysfunctional spinal joints send <span class="tt" data-tip="Position &amp; movement signals your spine constantly streams to the brain">corrupted, reduced sensory signals</span> to the brain. The brain's internal body map becomes inaccurate — navigating with a broken GPS.</div></div></div>
+          <div class="casc-step"><div class="casc-connector"><div class="casc-dot"></div><div class="casc-line"></div></div><div class="casc-body"><div class="casc-title">Altered Motor Patterns & Compensation</div><div class="casc-text">The brain compensates with altered movement — protecting the disrupted area but creating new stress points throughout the entire kinetic chain.</div></div></div>
+          <div class="casc-step"><div class="casc-connector"><div class="casc-dot"></div><div class="casc-line"></div></div><div class="casc-body"><div class="casc-title">Sympathetic Nervous System Activation</div><div class="casc-text">The brain interprets the corrupted signal as a threat, activating fight-or-flight — flooding the body with cortisol and adrenaline, suppressing all healing systems.</div></div></div>
+          <div class="casc-step"><div class="casc-connector"><div class="casc-dot"></div><div class="casc-line"></div></div><div class="casc-body"><div class="casc-title">Neuroinflammatory Cascade</div><div class="casc-text">Dysfunctional joints release inflammatory mediators that trigger immune signaling — pro-inflammatory cytokines reaching every organ via the bloodstream.</div></div></div>
+          <div class="casc-step"><div class="casc-connector"><div class="casc-dot"></div><div class="casc-line"></div></div><div class="casc-body"><div class="casc-title">Central Sensitization</div><div class="casc-text">Over time, the nervous system itself becomes hypersensitive — amplifying all pain, expanding pain regions, and making every subsequent stressor harder to recover from.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S3: SYMPATHETIC STORM ══ -->
+<section id="sympathetic" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="sym-grid">
+      <div>
+        <div class="s-eyebrow rv">Autonomic Dysregulation</div>
+        <h2 class="st rv">Locked in<br><em>Fight-or-Flight</em></h2>
+        <p class="sd rv" style="max-width:100%">Your autonomic nervous system has two modes. When spinal dysfunction sends chronic threat signals to your brain, it locks into sympathetic dominance — a state your body was designed for minutes, not months or years.</p>
+        <div class="sym-center-card rv">
+          <div class="sym-center-title">⚠️ Chronic Sympathetic Dominance</div>
+          <div class="sym-center-sub">Your nervous system, stuck in emergency mode</div>
+        </div>
+        <div class="sym-effects-grid rv d1">
+          <div class="sym-effect"><span class="sym-effect-icon">🛡️</span><div class="sym-effect-name">Immune Function</div><div class="sym-effect-val">↓ Suppressed</div></div>
+          <div class="sym-effect"><span class="sym-effect-icon">🍽️</span><div class="sym-effect-name">Digestion</div><div class="sym-effect-val">↓ Impaired</div></div>
+          <div class="sym-effect"><span class="sym-effect-icon">🔥</span><div class="sym-effect-name">Inflammation</div><div class="sym-effect-val">↑ Elevated</div></div>
+          <div class="sym-effect"><span class="sym-effect-icon">😴</span><div class="sym-effect-name">Sleep Quality</div><div class="sym-effect-val">↓ Disrupted</div></div>
+          <div class="sym-effect"><span class="sym-effect-icon">🧬</span><div class="sym-effect-name">Cellular Repair</div><div class="sym-effect-val">↓ Halted</div></div>
+          <div class="sym-effect"><span class="sym-effect-icon">⚖️</span><div class="sym-effect-name">Hormones</div><div class="sym-effect-val">↓ Dysregulated</div></div>
+        </div>
+        <div class="vagal-card rv d2" style="margin-top:14px;">
+          <div class="vagal-title">🌿 The Vagus Nerve: Your Healing Switch</div>
+          <div class="vagal-body">The vagus nerve is your primary parasympathetic pathway. Low <span class="tt" data-tip="The strength of your parasympathetic nervous system — your body's rest, digest &amp; heal mode">vagal tone</span> correlates with systemic inflammation, poor immune response, and higher disease risk. Chiropractic adjustments have been documented to measurably improve vagal tone.</div>
+        </div>
+      </div>
+      <div>
+        <div class="stat-band rv" style="margin-bottom:14px;">
+          <div class="stat-band-num">↑600%</div>
+          <div class="stat-band-text"><strong>Increase in inflammatory cytokines</strong> (TNF-α, IL-6) found in patients with chronic spinal dysfunction — the same markers elevated in heart disease, diabetes, and autoimmune conditions.</div>
+        </div>
+        <div class="stat-band rv d1" style="margin-bottom:14px;background:var(--amber);">
+          <div class="stat-band-num">24/7</div>
+          <div class="stat-band-text"><strong>Duration of sympathetic activation</strong> in patients with chronic postural stress. Your body was designed for acute stress — not this unrelenting threat signal.</div>
+        </div>
+        <div class="stat-band rv d2" style="margin-bottom:14px;background:var(--green);">
+          <div class="stat-band-num">↑42%</div>
+          <div class="stat-band-text"><strong>Improvement in HRV</strong> (<span class="tt" data-tip="A measure of how well your heart adapts to stress. Low HRV is one of the strongest predictors of poor health">heart rate variability</span> — the gold standard measure of autonomic health) documented in chiropractic spinal manipulation studies.</div>
+        </div>
+        <div class="card card-primary rv d3">
+          <div class="card-title">Why You Can't Just "Relax" Your Way Out</div>
+          <div class="card-body">Meditation and stress management help — but they cannot resolve the structural source of the threat signal. As long as spinal dysfunction degrades <span class='tt' data-tip='Your body\'s position and movement signals sent to the brain'>proprioceptive input</span>, your brain will interpret it as danger and maintain sympathetic activation. The signal must be corrected at its source.</div>
+        </div>
+        <div class="pe-box rv d4">
+          <div class="pe-label"><span class="pe-label-icon">💡</span>In Plain Terms</div>
+          <div class="pe-text">Imagine your <strong>car alarm going off and you can't turn it off</strong>. The siren is blaring 24 hours a day. That's what chronic spinal dysfunction does to your nervous system — your body is stuck in emergency mode, burning energy, suppressing healing, and wearing everything down.</div>
+          <div class="pe-analogy">
+            <span class="pe-analogy-label">Why this matters for more than back pain</span>
+            <span class="pe-analogy-text">When your body is stuck in "emergency mode," it <strong>shuts down everything non-essential</strong> — digestion, immune defense, hormone balance, tissue repair. These aren't separate problems. They're all downstream of the same stuck alarm.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S4: CENTRAL SENSITIZATION ══ -->
+<section id="sensitization" style="background:var(--white);">
+  <div class="wrap">
+    <div class="s-eyebrow rv">Pain Neuroscience</div>
+    <h2 class="st rv">How Untreated Dysfunction<br><em>Rewires Your Brain</em></h2>
+    <p class="sd rv">Central sensitization is the nervous system's most consequential adaptation — and the scientific reason why the longer dysfunction goes untreated, the harder every pain becomes to resolve.</p>
+    <div class="sen-layout">
+      <div>
+        <div class="dial-wrap rv">
+          <div class="dial-title">Pain Sensitivity — Interactive</div>
+          <div class="dial-svg-wrap">
+            <svg width="200" height="110" viewBox="0 0 200 110">
+              <!-- Arc track -->
+              <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="var(--border-d)" stroke-width="12" stroke-linecap="round"/>
+              <!-- Normal zone -->
+              <path d="M 20 100 A 80 80 0 0 1 100 20" fill="none" stroke="var(--primary-l)" stroke-width="12" stroke-linecap="round" opacity=".5"/>
+              <!-- Sensitized zone -->
+              <path d="M 100 20 A 80 80 0 0 1 180 100" fill="none" stroke="var(--red)" stroke-width="12" stroke-linecap="round" opacity=".4"/>
+              <!-- Needle -->
+              <g class="dial-needle-el" id="dialNeedle">
+                <line x1="100" y1="100" x2="100" y2="28" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="100" cy="100" r="7" fill="var(--ink)"/>
+              </g>
+              <!-- Labels -->
+              <text x="14" y="115" font-size="10" fill="var(--primary)" font-family="Source Sans 3,sans-serif" font-weight="700">Normal</text>
+              <text x="150" y="115" font-size="10" fill="var(--red)" font-family="Source Sans 3,sans-serif" font-weight="700">Sensitized</text>
+            </svg>
+          </div>
+          <div class="dial-btns">
+            <button class="dial-btn normal" onclick="setDial('normal')">Healthy NS</button>
+            <button class="dial-btn sensitized" onclick="setDial('sensitized')">Sensitized NS</button>
+          </div>
+          <div id="dialDesc" style="font-size:13px;color:var(--body);text-align:center;margin-top:12px;min-height:44px;line-height:1.5;padding:0 10px;"></div>
+        </div>
+
+        <div class="pe-box rv" style="margin-bottom:16px;">
+          <div class="pe-label"><span class="pe-label-icon">💡</span>In Plain Terms</div>
+          <div class="pe-text">Imagine your <strong>smoke detector becoming so sensitive</strong> it goes off every time you make toast. The alarm isn't wrong — it's just been set too low. That's what happens to your nervous system after months or years of untreated dysfunction. It stops accurately reporting reality and starts <strong>shouting pain at everything</strong>.</div>
+          <div class="pe-analogy">
+            <span class="pe-analogy-label">Why this changes your treatment</span>
+            <span class="pe-analogy-text">Once your nervous system is this sensitized, <strong>treating only the pain won't work</strong> — the problem is now in the alarm system itself, not just the thing that set it off. You need care that resets the sensitivity, not just covers up the sound.</span>
+          </div>
+        </div>
+        <div class="phase-cards rv d1">
+          <div class="phase-card p1"><div class="phase-card-title">🟢 Phase 1 — Normal</div><div class="phase-card-body">Pain signals accurately represent tissue damage. Remove the cause, pain resolves. Standard care works well.</div></div>
+          <div class="phase-card p2"><div class="phase-card-title">🟡 Phase 2 — Peripheral Sensitization</div><div class="phase-card-body">Injured tissues release sensitizers. Pain threshold drops — things that didn't hurt now do. Partially reversible with proper care.</div></div>
+          <div class="phase-card p3"><div class="phase-card-title">🔴 Phase 3 — Central Sensitization</div><div class="phase-card-body">The spinal cord and brain are rewired. Pain amplified everywhere. Even after tissue heals, the nervous system stays in alarm mode.</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="card card-lime rv" style="margin-bottom:14px;">
+          <div class="card-title" style="color:var(--lime-d);font-size:15px;">🧠 Cortical Smudging — The Brain Changes Shape</div>
+          <div class="card-body" style="margin-top:6px;">Chronic pain and dysfunction literally reorganize the somatosensory cortex — the area of your brain that maps body parts. Affected regions become distorted and overlap with neighboring areas. Patients experience this as diffuse, hard-to-locate pain that seems to "spread." Brain imaging studies confirm this is measurable structural change — and chiropractic care has been shown to begin reversing it.</div>
+          <span class="r-badge">fMRI Documented</span>
+        </div>
+        <div class="card rv d1" style="margin-bottom:14px;">
+          <div class="card-title">Hyperalgesia: Volume Turned Up</div>
+          <div class="card-body">Central sensitization amplifies pain signals at the spinal cord level. Normal sensations become painful. Mild stimuli cause disproportionate responses. The nervous system is no longer accurately representing reality — it's in a persistent state of alarm.</div>
+        </div>
+        <div class="card rv d2" style="margin-bottom:14px;">
+          <div class="card-title">Allodynia: Pain Without Cause</div>
+          <div class="card-body">In a sensitized nervous system, non-painful inputs — light touch, temperature changes, normal movement — trigger pain responses. This is why some patients hurt from the lightest contact or even clothing pressure.</div>
+        </div>
+        <div class="lime-band rv d3">
+          <div class="lime-band-text"><strong>Why This Justifies Comprehensive Care:</strong> Treating only the symptom is futile when the problem is now in the nervous system itself. Correction requires consistent, properly dosed neurological input over time to reverse the sensitization pattern — exactly what a structured chiropractic care plan provides.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S5: 7 SYSTEMS ══ -->
+<section id="systems" style="background:var(--bg);">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:40px;">
+      <div class="s-eyebrow rv" style="justify-content:center;">Whole-Body Impact</div>
+      <h2 class="st rv" style="text-align:center;">Seven Systems Disrupted<br>by <em>One Problem</em></h2>
+      <p class="sd rv" style="margin:0 auto 0;text-align:center;">This is why patients come in with back pain and also have digestive issues, fatigue, and poor immunity. One nervous system — one cascading disruption.</p>
+    </div>
+
+    <div class="pe-box rv" style="margin-bottom:32px;">
+      <div class="pe-label"><span class="pe-label-icon">💡</span>Why This Matters For You</div>
+      <div class="pe-text">This explains why people come in with back pain and also have <strong>stomach issues, constant illness, brain fog, and can't sleep</strong>. It's not bad luck. It's one disrupted nervous system affecting every system it controls — which is all of them. Check the cards below and see how many match your experience.</div>
+    </div>
+    <div class="systems-grid" id="sysGrid"></div>
+  </div>
+</section>
+
+<!-- ══ S6: INFLAMMATION ══ -->
+<section id="inflammation" style="background:var(--white);">
+  <div class="wrap">
+    <div class="s-eyebrow rv">The Root of Chronic Disease</div>
+    <h2 class="st rv">Neuroinflammation:<br><em>The Hidden Driver</em></h2>
+    <p class="sd rv">The nervous and immune systems communicate constantly through <span class="tt" data-tip="Chemical messengers between the immune and nervous systems — elevated in virtually every chronic disease">cytokines</span> and biochemical signals. Chronic nervous system dysfunction fuels chronic inflammation — and chronic inflammation is the root of virtually every major disease.</p>
+    <div class="inflam-layout">
+      <div>
+        <div class="cycle-box rv">
+          <div class="cycle-box-title">The Self-Perpetuating Cycle</div>
+          <div class="cycle-nodes">
+            <div class="cnode"><span class="cnode-icon">🦴</span><div class="cnode-title">Joint Dysfunction</div><div class="cnode-body">Releases inflammatory mediators locally</div></div>
+            <div class="cnode"><span class="cnode-icon">📡</span><div class="cnode-title">Degraded NS Input</div><div class="cnode-body">Triggers sympathetic threat response</div></div>
+            <div class="cnode"><span class="cnode-icon">🔥</span><div class="cnode-title">Cytokine Release</div><div class="cnode-body">IL-1, IL-6, TNF-α flood the bloodstream</div></div>
+            <div class="cnode"><span class="cnode-icon">🧠</span><div class="cnode-title">Brain "Sickness"</div><div class="cnode-body">Fatigue, fog, mood changes, amplified pain</div></div>
+            <div class="cycle-middle">INFLAM-<br>MATION<br>LOOP</div>
+          </div>
+        </div>
+        <div class="hpa-box rv d1">
+          <div class="hpa-title">⚗️ HPA Axis Dysregulation</div>
+          <div class="hpa-body">Chronic spinal dysfunction acts as a persistent stressor, dysregulating the <span class="tt" data-tip="Hypothalamic-Pituitary-Adrenal axis — your body's master stress hormone control system">HPA axis</span> — your body's master stress control system. The result: predictable allostatic load across every system.</div>
+          <div class="hpa-tags">
+            <span class="hpa-tag">Cortisol Dysregulation</span><span class="hpa-tag">Insulin Resistance</span><span class="hpa-tag">Metabolic Syndrome</span><span class="hpa-tag">Mood Disorders</span><span class="hpa-tag">Sleep Disruption</span><span class="hpa-tag">Immune Suppression</span><span class="hpa-tag">Accelerated Aging</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card rv" style="margin-bottom:14px;">
+          <div class="card-title">Chronic Inflammation Links to Every Major Disease</div>
+          <div class="card-body" style="margin-bottom:14px;">Chronic low-grade neuroinflammation is the common thread underlying virtually every major chronic disease. Patients who address nervous system dysfunction often see improvements in conditions they thought were completely unrelated to their spine.</div>
+          <div class="disease-grid">
+            <div class="disease-tag">❤️ Cardiovascular Disease</div>
+            <div class="disease-tag">🩸 Type 2 Diabetes</div>
+            <div class="disease-tag">🛡️ Autoimmune Disease</div>
+            <div class="disease-tag">🧠 Neurodegeneration</div>
+            <div class="disease-tag">🦠 Poor Immunity</div>
+            <div class="disease-tag">⚖️ Metabolic Disorders</div>
+            <div class="disease-tag">😰 Anxiety & Depression</div>
+            <div class="disease-tag">⏳ Accelerated Aging</div>
+          </div>
+        </div>
+        <div class="fmri-box rv d1">
+          <div class="fmri-box-title">🔬 Research Spotlight</div>
+          <div class="fmri-box-body">Studies measuring inflammatory <span class='tt' data-tip='Proteins that signal inflammation — elevated in nearly every chronic disease'>cytokines</span> (TNF-α, IL-1β, IL-6) before and after spinal manipulation show significant reductions — not by suppressing the immune system, but by removing the neurological driver of inflammation at its source. This is why patients report whole-body improvements beyond the area treated.</div>
+        </div>
+        <div class="pe-box rv d2">
+          <div class="pe-label"><span class="pe-label-icon">💡</span>In Plain Terms</div>
+          <div class="pe-text">Think of inflammation like a <strong>slow leak in your plumbing</strong>. A little water damage at first — barely noticeable. But left unchecked, it soaks into the walls, the foundation, everywhere. Chronic nervous system dysfunction is that slow leak, and every major chronic disease is the water damage.</div>
+          <div class="pe-analogy">
+            <span class="pe-analogy-label">The good news</span>
+            <span class="pe-analogy-text">Just as fixing the pipe stops the water damage from spreading, <strong>correcting your nervous system function turns down the inflammatory signal at its source</strong> — not by masking it with medication, but by removing the reason your body was inflamed in the first place.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S7: BRAIN NUTRITION ══ -->
+<section id="movement" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="two-col two-col-center">
+      <div>
+        <div class="s-eyebrow rv">Mechanotransduction</div>
+        <h2 class="st rv">Movement Is<br><em>Brain Food</em></h2>
+        <p class="sd rv" style="max-width:100%">Your brain is not fed by food alone — it requires constant mechanical stimulation from your joints and spine to function optimally. This is neuroscience, not metaphor: mechanotransduction.</p>
+        <div class="step-list rv">
+          <div class="step-item"><div class="step-num">1</div><div><div class="step-title">BDNF — Brain Fertilizer</div><div class="step-body">Proper spinal movement triggers release of BDNF (<span class="tt" data-tip="Often called Miracle-Gro for the brain — essential for growing new neurons and protecting against cognitive decline">brain-derived neurotrophic factor</span>) — essential for growing new neurons, improving synaptic plasticity, and protecting against neurodegeneration. Spinal dysfunction suppresses it.</div><span class="r-badge">Neuroplasticity activator</span></div></div>
+          <div class="step-item"><div class="step-num">2</div><div><div class="step-title">Gate Control — Natural Pain Inhibition</div><div class="step-body">Proper joint mechanics activate mechanoreceptors that close the "gate" on pain signals at the spinal cord level. Adjustments flood this gate with correct input — providing neurological pain relief without medication.</div></div></div>
+          <div class="step-item"><div class="step-num">3</div><div><div class="step-title">Cerebellar Input & Coordination</div><div class="step-body">Your cerebellum processes spinal proprioceptive input to coordinate movement, balance, and posture. Spinal dysfunction degrades this input, impairing coordination and increasing fall risk — especially as we age.</div></div></div>
+          <div class="step-item"><div class="step-num">4</div><div><div class="step-title">Cartilage Health & Joint Nutrition</div><div class="step-body">Cartilage has no blood supply — it's nourished by the compression and decompression of movement. Dysfunctional joints that aren't moving properly create nutrient-starved cartilage that degenerates far faster.</div></div></div>
+        </div>
+
+        <div class="pe-box rv d4">
+          <div class="pe-label"><span class="pe-label-icon">💡</span>In Plain Terms</div>
+          <div class="pe-text">Movement is <strong>literally food for your brain</strong>. When your spine isn't moving properly, your brain gets starved of the signals it needs to stay sharp, regulate mood, and keep your body healing. It's not just about flexibility — it's about keeping your brain fed.</div>
+          <div class="pe-analogy">
+            <span class="pe-analogy-label">🪴 Think of it like a plant</span>
+            <span class="pe-analogy-text">A plant needs water, sunlight, and good soil to grow. Your brain needs <strong>proper movement signals from your spine</strong> the same way. Without them, it doesn't die immediately — it just slowly stops thriving. Mood drops. Focus fades. Pain amplifies. Recovery slows.</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="bdnf-panel rv">
+        <span class="bdnf-word">BDNF</span>
+        <span class="bdnf-label">Brain-Derived Neurotrophic Factor</span>
+        <div class="bdnf-body">Often called "Miracle-Gro for the brain," BDNF is essential for neuroplasticity — the brain's ability to form new connections, learn, and protect against cognitive decline. Chronic pain and spinal dysfunction suppress it.</div>
+        <span class="bdnf-tag">Neuroplasticity Activator</span>
+        <div class="bdnf-table">
+          <div class="bdnf-row"><span class="bdnf-row-label">Aerobic Exercise</span><span class="bdnf-row-val up">↑ 200–300%</span></div>
+          <div class="bdnf-row"><span class="bdnf-row-label">Spinal Adjustment</span><span class="bdnf-row-val norm">Normalized ✓</span></div>
+          <div class="bdnf-row"><span class="bdnf-row-label">Quality Sleep</span><span class="bdnf-row-val up">Primary release</span></div>
+          <div class="bdnf-row"><span class="bdnf-row-label">Chronic Pain/Stress</span><span class="bdnf-row-val down">↓ Suppressed</span></div>
+          <div class="bdnf-row"><span class="bdnf-row-label">Sedentary Behavior</span><span class="bdnf-row-val down">↓ Depleted</span></div>
+        </div>
+        <div style="margin-top:18px;padding:14px;background:rgba(255,255,255,.12);border-radius:8px;">
+          <p style="font-size:12px;color:rgba(255,255,255,.85);line-height:1.55;">"Sitting is the new smoking" — sedentary lifestyle and spinal dysfunction starve the brain of essential proprioceptive input. The brain consumes 20% of all metabolic resources largely to process sensory input. Reducing that input accelerates cognitive and systemic decline.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S8: GUT-BRAIN ══ -->
+<section id="gutbrain" style="background:var(--white);">
+  <div class="wrap">
+    <div class="two-col two-col-center">
+      <div>
+        <div class="s-eyebrow rv">The Gut-Brain Axis</div>
+        <h2 class="st rv">Your Second<br><em>Brain</em></h2>
+        <p class="sd rv" style="max-width:100%">Your gut contains 500 million neurons — more than your spinal cord. The <span class="tt" data-tip="Your gut's own nervous system — 500 million neurons that operate largely independently of the brain">enteric</span> and central nervous systems communicate through the vagus nerve. When spinal dysfunction impairs vagal tone, the gut pays the price.</p>
+        <div class="step-list rv">
+          <div class="step-item"><div class="step-num">1</div><div><div class="step-title">Gut Motility Disruption</div><div class="step-body">Autonomic imbalance slows or speeds gut motility — causing constipation, diarrhea, IBS, or bloating that doesn't respond to dietary changes because the driver is neurological, not dietary.</div></div></div>
+          <div class="step-item"><div class="step-num">2</div><div><div class="step-title">Enzyme & Acid Suppression</div><div class="step-body">Parasympathetic activation is required to trigger digestive enzyme and stomach acid production. Sympathetic dominance suppresses this — leading to incomplete digestion and nutrient malabsorption.</div></div></div>
+          <div class="step-item"><div class="step-num">3</div><div><div class="step-title">Intestinal Permeability (Leaky Gut)</div><div class="step-body">Chronic sympathetic overdrive increases intestinal permeability — allowing bacterial toxins and undigested proteins into the bloodstream, triggering systemic immune activation and amplifying whole-body inflammation.</div></div></div>
+          <div class="step-item"><div class="step-num">4</div><div><div class="step-title">Microbiome Dysbiosis</div><div class="step-body">Stress hormones alter the gut microbiome — reducing beneficial bacteria and allowing pathogenic species to flourish. The microbiome influences brain chemistry, mood, and immune function.<span class="tag lime" style="margin-left:6px;font-size:11px;">70% of immunity</span></div></div></div>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="vagus-visual">
+          <div class="vagus-title">The Vagus Nerve Pathway</div>
+          <div class="vagus-body">The vagus nerve connects your brainstem to your heart, lungs, stomach, liver, kidneys, intestines, and immune organs. When spinal dysfunction and sympathetic dominance suppress vagal tone, every organ connection is compromised.</div>
+          <div class="vagus-chain">
+            <div class="vc-item"><div class="vc-dot"></div>Brainstem (Origin)</div>
+            <div class="vc-arrow">↓</div>
+            <div class="vc-item"><div class="vc-dot"></div>Heart & Lungs</div>
+            <div class="vc-arrow">↓</div>
+            <div class="vc-item"><div class="vc-dot"></div>Stomach & Liver</div>
+            <div class="vc-arrow">↓</div>
+            <div class="vc-item"><div class="vc-dot"></div>Small & Large Intestine</div>
+            <div class="vc-arrow">↓</div>
+            <div class="vc-item"><div class="vc-dot"></div>Immune Tissue (Spleen, GALT)</div>
+          </div>
+        </div>
+
+        <div class="pe-box rv d2" style="margin-top:14px;">
+          <div class="pe-label"><span class="pe-label-icon">💡</span>In Plain Terms</div>
+          <div class="pe-text">Your gut and brain are in <strong>constant conversation</strong> — and the main phone line between them runs right through your spine and neck. When that line is disrupted, your gut stops getting the "rest and digest" signal it needs. Bloating, IBS, poor immunity — these aren't just stomach problems. <strong>They're communication problems.</strong></div>
+        </div>
+
+        <div class="lime-band rv d1" style="margin-top:14px;">
+          <div class="lime-band-text"><strong>Why your digestion, immunity, and mood are all connected to your spine:</strong> It's not coincidence. All three are downstream effects of the same autonomic imbalance. Correcting the spine restores the regulatory signals that allow every other system to function as designed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S9: THE CORRECTION ══ -->
+<section id="correction" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="s-eyebrow rv">The Science of Correction</div>
+    <h2 class="st rv">What an Adjustment<br><em>Actually Does</em></h2>
+    <p class="sd rv">Now that you understand the mechanism of dysfunction, you can understand why the adjustment works — and why it requires a course of care, not a single visit.</p>
+    <div class="corr-layout">
+      <div class="step-list rv">
+        <div class="step-item"><div class="step-num">1</div><div><div class="step-title">Restores Proprioceptive Signal Quality</div><div class="step-body">The adjustment restores normal joint mechanics — immediately improving the quality and volume of sensory input reaching the brain. The brain's internal body map begins correcting. Cortical smudging starts to reverse.</div><span class="r-badge">fMRI documented</span></div></div>
+        <div class="step-item"><div class="step-num">2</div><div><div class="step-title">Resets Sympathetic Dominance</div><div class="step-body">Correcting the source of the threat signal reduces sympathetic tone and restores parasympathetic activity — measurably improving heart rate variability, lowering cortisol, and re-enabling the body's healing systems.</div><span class="r-badge">HRV studies confirmed</span></div></div>
+        <div class="step-item"><div class="step-num">3</div><div><div class="step-title">Reduces Neuroinflammation</div><div class="step-body">Studies show spinal manipulation reduces pro-inflammatory cytokines (TNF-α, IL-1β, IL-6) — not by suppressing the immune system, but by removing the neurological driver of inflammation at its source.</div><span class="r-badge">Cytokine studies</span></div></div>
+        <div class="step-item"><div class="step-num">4</div><div><div class="step-title">Interrupts Central Sensitization</div><div class="step-body">Consistent mechanoreceptor activation from adjustments overrides sensitized pain pathways — the gate control effect. Over a care plan, this resets pain thresholds and reverses the sensitization established by chronic dysfunction.</div><span class="r-badge">Neuroplasticity research</span></div></div>
+        <div class="step-item"><div class="step-num">5</div><div><div class="step-title">Triggers BDNF & Neuroplasticity</div><div class="step-body">Restoring proper spinal mechanics normalizes mechanotransduction — the mechanical stimulus the brain requires for BDNF production and long-term neural health. This protects your brain, not just your spine.</div><span class="r-badge">Mechanotransduction data</span></div></div>
+      </div>
+      <div>
+        <div class="card card-primary rv" style="margin-bottom:14px;">
+          <div class="card-title">Why Multiple Visits Are Neurologically Required</div>
+          <div class="card-body"><span class="tt" data-tip="Your brain's lifelong ability to form new connections and change its patterns through repetition">Neuroplasticity</span> — the brain's ability to rewire — operates through repetition. A single adjustment provides a corrective signal. A course of adjustments at the proper frequency <em>retrains the neuromuscular pattern.</em> Just as you cannot reverse years of misalignment with one day of braces, you cannot reverse years of spinal dysfunction with a single visit. The frequency and duration of care is not arbitrary — it is neurologically calculated.</div>
+        </div>
+
+        <div class="pe-box rv d1" style="margin-bottom:14px;">
+          <div class="pe-label"><span class="pe-label-icon">💡</span>Why Multiple Visits Make Sense</div>
+          <div class="pe-text">You wouldn't expect <strong>one trip to the gym</strong> to get you fit after years of not exercising. You wouldn't expect <strong>one week of braces</strong> to straighten teeth after years of misalignment. Your nervous system works the same way — it needs consistent, repeated input to learn a new pattern. That's not a sales tactic. That's neuroscience.</div>
+        </div>
+        <div class="phase-timeline rv d1" style="margin-bottom:14px;">
+          <div class="pt-title">Neuroplasticity Timeline</div>
+          <div class="pt-steps">
+            <div class="pt-step"><span class="pt-num">Wk 1–4</span><span class="pt-lbl">Signal restoration begins</span></div>
+            <div class="pt-step"><span class="pt-num">Mo 1–3</span><span class="pt-lbl">Pattern retraining</span></div>
+            <div class="pt-step"><span class="pt-num">Mo 3–6</span><span class="pt-lbl">Structural correction</span></div>
+            <div class="pt-step"><span class="pt-num">Ongoing</span><span class="pt-lbl">Wellness maintenance</span></div>
+          </div>
+        </div>
+        <div class="outcome-phases rv d2">
+          <div class="op-card relief"><div class="op-title">🚨 Phase 1 — Relief Care</div><ul class="op-list"><li>Acute signal restoration begins</li><li>Sympathetic tone starts to reduce</li><li>Pain threshold begins normalizing</li><li>Muscle guarding releases</li></ul></div>
+          <div class="op-card correct"><div class="op-title">🔧 Phase 2 — Corrective Care</div><ul class="op-list"><li>Neuroplastic rewiring of motor patterns</li><li>Central sensitization reversal underway</li><li>Inflammatory markers decline measurably</li><li>Systemic health improvements emerge</li></ul></div>
+          <div class="op-card wellness"><div class="op-title">🎯 Phase 3 — Wellness Care</div><ul class="op-list"><li>Sustained optimal proprioceptive input</li><li>Parasympathetic dominance maintained</li><li>BDNF production normalized</li><li>Immune & metabolic optimization</li><li>Degeneration arrested and stabilized</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S10: DECISION ══ -->
+<section id="decision" style="background:var(--white);">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:40px;">
+      <div class="s-eyebrow rv" style="justify-content:center;">Your Choice</div>
+      <h2 class="st rv" style="text-align:center;">Two Paths.<br><em>One Nervous System.</em></h2>
+      <p class="sd rv" style="margin:0 auto;text-align:center;">Every patient faces the same decision. The consequences of each path extend far beyond your back.</p>
+    </div>
+    <div class="dec-grid">
+      <div class="dec-card no rv">
+        <h3>❌ Nervous System Left in Dysfunction</h3>
+        <ul class="dec-list">
+          <li>Sympathetic dominance continues — healing suppressed</li>
+          <li>Inflammatory cytokines remain chronically elevated</li>
+          <li>Central sensitization deepens — all pain worsens</li>
+          <li>Cortical smudging advances — brain map distorts further</li>
+          <li>BDNF suppressed — brain health and mood decline</li>
+          <li>Gut-brain axis continues deteriorating</li>
+          <li>HPA axis dysregulation → metabolic and hormonal decline</li>
+          <li>Spinal degeneration accelerates unchecked</li>
+          <li>Every future injury becomes harder to recover from</li>
+        </ul>
+      </div>
+      <div class="dec-card yes rv d1">
+        <h3>✅ Nervous System Restored</h3>
+        <ul class="dec-list">
+          <li>Proprioceptive signal quality restored to brain</li>
+          <li>Sympathetic dominance resolves — healing resumes</li>
+          <li>Inflammatory cascade down-regulated at its source</li>
+          <li>Central sensitization reverses over course of care</li>
+          <li>BDNF normalized — brain health and mood protected</li>
+          <li>Vagal tone improves — gut, immune, cardiac benefits</li>
+          <li>HPA axis resets — hormones and metabolism stabilize</li>
+          <li>Spinal degeneration halted, partially reversed</li>
+          <li>Resilience built — you recover from stress faster</li>
+        </ul>
+      </div>
+    </div>
+    <div class="commit-panel rv">
+      <h3>You Can Eat Right, Exercise, and Take Every Supplement —<br>But If Your Nervous System Is Misfiring, Your Body Cannot Heal.</h3>
+      <p>The nervous system is the master regulator. It must be addressed first. Everything else you do for your health becomes exponentially more effective when your nervous system is working as designed. Our comprehensive care plan is built on this science — restoring your nervous system so your body can do what it was always designed to do.</p>
+      <button class="commit-btn" onclick="showCommit()">I Understand — I'm Ready for Real Care →</button>
+      <div class="commit-confirm" id="commitConf">
+        <p>✅ That's the most important health decision you can make. Your care team will now walk you through your specific findings and your personalized plan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-stripe"></div>
+
+<script>
+// ── SYSTEMS DATA ──
+const SYSTEMS = [
+  {c:'#5987C5',icon:'💪',title:'Motor Control',sub:'Proprioceptive Feedback Loop',mech:'Dysfunctional joints send degraded proprioceptive data to the brain, corrupting the internal body map used for every movement decision. The brain compensates with altered motor patterns that create secondary injury throughout the kinetic chain.',symptoms:['Muscle weakness and imbalance','Poor coordination and balance','Compensatory movement patterns','Increased injury risk','Altered gait patterns']},
+  {c:'#9ACAEC',icon:'🛡️',title:'Immune Function',sub:'Neuroimmune Communication',mech:'Sympathetic dominance from spinal dysfunction suppresses immune surveillance while simultaneously triggering chronic pro-inflammatory signaling — creating dangerous immune dysregulation where you are both under-protected and chronically inflamed.',symptoms:['Frequent illness and slow recovery','Allergies and sensitivities','Autoimmune flares','Poor wound healing','Elevated inflammatory markers']},
+  {c:'#C1CC23',icon:'🍽️',title:'Digestive System',sub:'Enteric Nervous System',mech:'Parasympathetic activity is required for digestion — enzyme production, gut motility, intestinal barrier integrity. Chronic sympathetic dominance suppresses all of this. The vagus nerve, primary parasympathetic pathway, is directly affected by cervical and thoracic dysfunction.',symptoms:['IBS and irregular bowel function','Acid reflux and GERD','Bloating and gas','Constipation or diarrhea','Nutrient malabsorption']},
+  {c:'#D97A10',icon:'😴',title:'Sleep & Recovery',sub:'HPA Axis & Circadian Rhythm',mech:'Chronic pain and nervous system dysfunction dysregulate cortisol rhythms and melatonin production. Sympathetic activation at night prevents the parasympathetic shift required for deep, restorative sleep — blocking the primary recovery window for every body system.',symptoms:['Difficulty falling asleep','Non-restorative sleep','Frequent night waking','Morning fatigue despite sleep','Altered cortisol rhythms']},
+  {c:'#D94040',icon:'⚗️',title:'Hormones & Metabolism',sub:'Hypothalamic Regulation',mech:'The hypothalamus integrates nervous system input to regulate thyroid, sex hormones, growth hormone, appetite, and circadian rhythms. Chronic pain alters hypothalamic function — explaining why patients with spinal dysfunction often have metabolic and hormonal problems seemingly unrelated to their spine.',symptoms:['Thyroid dysfunction','Weight gain resistance','Fatigue and low motivation','Insulin resistance','Sex hormone imbalance']},
+  {c:'#3D6BA8',icon:'❤️',title:'Cardiovascular',sub:'Autonomic Cardiac Control',mech:'Heart rate, blood pressure, and cardiac rhythm are under direct autonomic control. Chronic sympathetic dominance elevates resting heart rate and blood pressure, reduces heart rate variability, and drives arterial inflammation — all measurable cardiovascular risk factors.',symptoms:['Elevated blood pressure','Reduced HRV — key cardiac marker','Heart palpitations','Poor exercise recovery','Increased cardiovascular risk']},
+  {c:'#8A9118',icon:'🧠',title:'Brain & Mental Health',sub:'Neuroinflammation & BDNF',mech:'Neuroinflammation from chronic nervous system dysfunction reaches the brain — producing fatigue, cognitive fog, mood changes, and depression. Simultaneously, BDNF suppression from chronic pain impairs neuroplasticity and accelerates cognitive aging.',symptoms:['Brain fog and poor concentration','Anxiety and depression','Memory difficulties','Emotional dysregulation','Increased neurodegenerative risk']},
+];
+
+function buildSystems(){
+  const g=document.getElementById('sysGrid');
+  SYSTEMS.forEach((s,i)=>{
+    const d=document.createElement('div');
+    d.className='sys-card rv';
+    d.style.setProperty('--sys-c',s.c);
+    d.style.transitionDelay=(i%3*.08)+'s';
+    d.innerHTML=`<span class="sys-icon">${s.icon}</span><div class="sys-title">${s.title}</div><div class="sys-sub">${s.sub}</div><div class="sys-mech">${s.mech}</div><ul class="sys-symptoms">${s.symptoms.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+    g.appendChild(d);
+  });
+}
+
+// ── SIGNAL BITS ──
+function buildBits(){
+  const g=document.getElementById('goodBits');
+  const b=document.getElementById('badBits');
+  if(!g||!b)return;
+  for(let i=0;i<20;i++){
+    const b1=document.createElement('div');b1.className='sbit on';g.appendChild(b1);
+    const b2=document.createElement('div');b2.className=`sbit ${i<7?'err':(i<10?'mis':'off')}`;b.appendChild(b2);
+  }
+}
+
+// ── DIAL ──
+function setDial(mode){
+  const n=document.getElementById('dialNeedle');
+  const d=document.getElementById('dialDesc');
+  if(mode==='normal'){
+    n.style.transform='rotate(-85deg)';
+    d.textContent='Healthy nervous system: Pain accurately represents tissue damage. Remove the cause, pain resolves. Standard care is effective.';
+  }else{
+    n.style.transform='rotate(50deg)';
+    d.innerHTML='<strong style="color:var(--red)">Sensitized nervous system:</strong> Amplified pain signals. Normal sensations cause pain. Healing slows dramatically even after the original injury resolves. Comprehensive care is required to reverse this pattern.';
+  }
+}
+
+// ── REVEAL ──
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')});},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// ── NAV ──
+const SECS=['hero','master','degraded','sympathetic','sensitization','systems','inflammation','movement','gutbrain','correction','decision'];
+function buildNav(){
+  const p=document.getElementById('navProg');
+  SECS.forEach(()=>{const d=document.createElement('div');d.className='np';p.appendChild(d);});
+}
+const secObs=new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(x.isIntersecting){
+      const i=SECS.indexOf(x.target.id);
+      document.querySelectorAll('.nt').forEach((t,j)=>t.classList.toggle('on',j===i));
+      document.querySelectorAll('.np').forEach((d,j)=>{d.classList.toggle('done',j<i);d.classList.toggle('here',j===i);});
+    }
+  });
+},{threshold:.35});
+SECS.forEach(id=>{const el=document.getElementById(id);if(el)secObs.observe(el);});
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'});}
+
+function showCommit(){
+  const el=document.getElementById('commitConf');
+  el.style.display='block';
+  el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+buildSystems();
+buildBits();
+buildNav();
+setDial('normal');
+setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>obs.observe(el)),150);
+</script>
+</body>
+</html>
